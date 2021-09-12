@@ -1,11 +1,13 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import './App.css';
+import './App.css'
 
-const App:FC = () => {
+import AppRouter from './components/AppRouter'
+
+const App: FC = () => {
   return (
     <div>
-        Работает!
+        <AppRouter />
     </div>
   );
 }
