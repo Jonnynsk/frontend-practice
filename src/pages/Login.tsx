@@ -1,11 +1,12 @@
 import { FC } from 'react'
+import { Layout } from 'antd'
 
 const Login: FC = () => {
     return (
-        <div>
+        <Layout>
             Login
-        </div>
-    );
-};
+        </Layout>
+    )
+}
 
-export default Login;
+export default Login

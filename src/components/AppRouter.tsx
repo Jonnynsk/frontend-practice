@@ -1,14 +1,15 @@
-import { FC } from 'react';
+import { FC } from 'react'
 import { Redirect, Route, Switch } from 'react-router'
+import { useTypedSelector } from '../hooks/useTypedSelector'
 
 import { privateRoutes, publicRoutes, RouteNames } from '../router'
 
 const AppRouter: FC = () => {
 
-    const auth = true
+    const { isAuth } = useTypedSelector(state => state.auth)
 
     return (
-        auth
+        isAuth
             ?
             <Switch>
                 {privateRoutes.map(route =>
@@ -19,7 +20,7 @@ const AppRouter: FC = () => {
                         key={route.path}
                     />
                 )}
-                <Redirect to={RouteNames.EVENT}/>
+                <Redirect to={RouteNames.EVENT} />
             </Switch>
             :
             <Switch>
@@ -31,7 +32,7 @@ const AppRouter: FC = () => {
                         key={route.path}
                     />
                 )}
-                <Redirect to={RouteNames.LOGIN}/>
+                <Redirect to={RouteNames.LOGIN} />
             </Switch>
     )
 }
