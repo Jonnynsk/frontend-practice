@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import { Redirect, Route, Switch } from 'react-router'
 
 import { privateRoutes, publicRoutes, RouteNames } from '../router'
 
-const AppRouter = () => {
+const AppRouter: FC = () => {
 
     const auth = true
 
@@ -32,7 +33,7 @@ const AppRouter = () => {
                 )}
                 <Redirect to={RouteNames.LOGIN}/>
             </Switch>
-    );
-};
+    )
+}
 
-export default AppRouter;
+export default AppRouter
