@@ -4,11 +4,14 @@ import { Layout, Menu, Row } from 'antd'
 
 import { RouteNames } from '../router'
 import { useTypedSelector } from '../hooks/useTypedSelector'
+import { useDispatch } from 'react-redux'
+import { AuthActionCreators } from '../store/reducers/auth/action-creators'
 
 const Navbar: FC = () => {
 
     const router = useHistory()
-    const { isAuth } = useTypedSelector(state => state.auth)
+    const dispatch = useDispatch()
+    const { isAuth, user } = useTypedSelector(state => state.auth)
 
     return (
         <Layout.Header>
@@ -16,9 +19,9 @@ const Navbar: FC = () => {
                 {isAuth
                     ?
                     <>
-                        <div style={{ color: 'white' }}>Jonnynsk</div>
+                        <div style={{ color: 'white' }}>{user.username}</div>
                         <Menu theme="dark" mode="horizontal" selectable={false}>
-                            <Menu.Item onClick={() => console.log('Quit')} key={1}>Выйти</Menu.Item>
+                            <Menu.Item onClick={() => dispatch(AuthActionCreators.logout())} key={1}>Выйти</Menu.Item>
                         </Menu>
                     </>
                     :
